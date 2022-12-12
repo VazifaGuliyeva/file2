@@ -1,29 +1,26 @@
 package org.example;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            FileOutputStream fileOutputstream = new FileOutputStream("text.file");
-            String s = "Hi,my name is Vazifa";
-            byte[] byteArray = s.getBytes();
-            fileOutputstream.write(byteArray);
-        }catch(Exception ex){
+            FileWriter fileWriter = new FileWriter("file.txt");
+            BufferedWriter bufferedWriter;
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write("Hello,my dears groupmates");
+            bufferedWriter.close();
+        } catch (Exception ex) {
             ex.printStackTrace();
+
         }
         try{
-            FileInputStream fileInputstream=new FileInputStream("text.file");
-            int a=0;
-            while((a=fileInputstream.read())!=-1){
-                System.out.print((char)a);
-
-            }
-
+            FileReader fileReader=new FileReader("file.txt");
+            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            System.out.println(bufferedReader.readLine());
         }catch(Exception ex){
             ex.printStackTrace();
-        }
 
+        }
     }
 }
